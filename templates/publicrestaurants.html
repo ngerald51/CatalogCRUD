@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row divider blue">
+    <div class="col-md-12"></div>
+     <h1>Catalogs</h1>
+</div>
+
+<div class='flash' align="center">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+    {% for message in messages %}
+    <strong> {{ message }} </strong>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+</div>
+<div class="row padding-top padding-bottom">
+
+{% for catalog in catalogs %}
+<a href="{{url_for('showMenu', catalog_id = catalog.id)}}">
+    <div class="row">
+
+        <div class="col-md-12 restaurant-list">
+            <h3>{{catalog.name}}</h3>
+        </div>
+    </div>
+</a>
+{% endfor %}
+{% endblock %}
